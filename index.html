@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote Generator</title>
+  <style>
+    .container {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      background-color: #081b29;
+    }
+    h1{
+        position: absolute;
+        top: 0;
+        left: 100;
+       color: #007BFF;
+       font-size: 50px;
+       font-weight: bold;
+       text-shadow: 0px 0px 2px black;
+       opacity: 0.9;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .quote {
+        display: block;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    #quote-text {
+      font-size: 26px;
+      margin-bottom: 10px;
+      color: #00abf0;
+    }
+
+    #quote-author {
+      font-size: 20px;
+      color: white;
+      font-weight: bold;
+      text-shadow: 1px 1px 0px rgb(0, 0, 0);
+    }
+
+    #new-quote-btn {
+    
+      font-size: 16px;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #new-quote-btn:hover {
+      background-color: #0056b3;
+      font-weight: bold;
+    }
+    #created-by
+    {
+        position: relative;
+        top: 140px;
+        left: 400px;
+        color: #00abf0;
+        font-size: 30px;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+        text-shadow: 0px 0px 1px rgb(28, 12, 129);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+     <h1>Quote Generator</h1>
+    <div class="quote">
+      <blockquote id="quote-text">Loading...</blockquote>
+      <p id="quote-author">Author</p>
+    </div>
+    <button id="new-quote-btn">New Quote</button>
+    <p id="created-by">-VINAY</p>
+  </div>
+  <script>
+    const quotes = [
+      {
+        text: "Be yourself; everyone else is already taken.",
+        author: "Oscar Wilde"
+      },
+      {
+        text: "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.",
+        author: "Albert Einstein"
+      },
+      {
+        text: "The only way to do great work is to love what you do.",
+        author: "Steve Jobs"
+      },
+      {
+        text: "You miss 100% of the shots you don't take.",
+        author: "Wayne Gretzky"
+      },
+      {
+        text: "Life is what happens when you're busy making other plans.",
+        author: "John Lennon"
+      },
+      {
+        text:"As a writer, you should not judge, you should understand",
+        author: "Ernest Hemingway"
+      },
+      {
+        text:"It may be bad, but it's the only way you can do anything really good",
+        author:"William Faulkner"
+      }
+    ];
+
+    const quoteText = document.getElementById("quote-text");
+    const quoteAuthor = document.getElementById("quote-author");
+    const newQuoteBtn = document.getElementById("new-quote-btn");
+
+    function getRandomQuote() {
+      return quotes[Math.floor(Math.random() * quotes.length)];
+    }
+
+    function displayQuote() {
+      const { text, author } = getRandomQuote();
+      quoteText.textContent = text;
+      quoteAuthor.textContent = `- ${author}`;
+    }
+
+    newQuoteBtn.addEventListener("click", displayQuote);
+
+    // Display initial quote on page load
+    displayQuote();
+  </script>
+</body>
+</html>
